@@ -1,0 +1,15 @@
+E:\InveonBitirme\E_Commerce\E_Commerce.Data\bin\Debug\net5.0\E_Commerce.Data.deps.json
+E:\InveonBitirme\E_Commerce\E_Commerce.Data\bin\Debug\net5.0\E_Commerce.Data.runtimeconfig.json
+E:\InveonBitirme\E_Commerce\E_Commerce.Data\bin\Debug\net5.0\E_Commerce.Data.runtimeconfig.dev.json
+E:\InveonBitirme\E_Commerce\E_Commerce.Data\bin\Debug\net5.0\E_Commerce.Data.dll
+E:\InveonBitirme\E_Commerce\E_Commerce.Data\bin\Debug\net5.0\ref\E_Commerce.Data.dll
+E:\InveonBitirme\E_Commerce\E_Commerce.Data\bin\Debug\net5.0\E_Commerce.Data.pdb
+E:\InveonBitirme\E_Commerce\E_Commerce.Data\obj\Debug\net5.0\E_Commerce.Data.csproj.AssemblyReference.cache
+E:\InveonBitirme\E_Commerce\E_Commerce.Data\obj\Debug\net5.0\E_Commerce.Data.GeneratedMSBuildEditorConfig.editorconfig
+E:\InveonBitirme\E_Commerce\E_Commerce.Data\obj\Debug\net5.0\E_Commerce.Data.AssemblyInfoInputs.cache
+E:\InveonBitirme\E_Commerce\E_Commerce.Data\obj\Debug\net5.0\E_Commerce.Data.AssemblyInfo.cs
+E:\InveonBitirme\E_Commerce\E_Commerce.Data\obj\Debug\net5.0\E_Commerce.Data.csproj.CoreCompileInputs.cache
+E:\InveonBitirme\E_Commerce\E_Commerce.Data\obj\Debug\net5.0\E_Commerce.Data.dll
+E:\InveonBitirme\E_Commerce\E_Commerce.Data\obj\Debug\net5.0\ref\E_Commerce.Data.dll
+E:\InveonBitirme\E_Commerce\E_Commerce.Data\obj\Debug\net5.0\E_Commerce.Data.pdb
+E:\InveonBitirme\E_Commerce\E_Commerce.Data\obj\Debug\net5.0\E_Commerce.Data.genruntimeconfig.cache

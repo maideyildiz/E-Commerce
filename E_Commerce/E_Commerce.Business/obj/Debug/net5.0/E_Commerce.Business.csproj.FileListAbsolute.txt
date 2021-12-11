@@ -1,0 +1,15 @@
+E:\InveonBitirme\E_Commerce\E_Commerce.Business\bin\Debug\net5.0\E_Commerce.Business.deps.json
+E:\InveonBitirme\E_Commerce\E_Commerce.Business\bin\Debug\net5.0\E_Commerce.Business.dll
+E:\InveonBitirme\E_Commerce\E_Commerce.Business\bin\Debug\net5.0\ref\E_Commerce.Business.dll
+E:\InveonBitirme\E_Commerce\E_Commerce.Business\bin\Debug\net5.0\E_Commerce.Business.pdb
+E:\InveonBitirme\E_Commerce\E_Commerce.Business\bin\Debug\net5.0\E_Commerce.Data.dll
+E:\InveonBitirme\E_Commerce\E_Commerce.Business\bin\Debug\net5.0\E_Commerce.Data.pdb
+E:\InveonBitirme\E_Commerce\E_Commerce.Business\obj\Debug\net5.0\E_Commerce.Business.csproj.AssemblyReference.cache
+E:\InveonBitirme\E_Commerce\E_Commerce.Business\obj\Debug\net5.0\E_Commerce.Business.GeneratedMSBuildEditorConfig.editorconfig
+E:\InveonBitirme\E_Commerce\E_Commerce.Business\obj\Debug\net5.0\E_Commerce.Business.AssemblyInfoInputs.cache
+E:\InveonBitirme\E_Commerce\E_Commerce.Business\obj\Debug\net5.0\E_Commerce.Business.AssemblyInfo.cs
+E:\InveonBitirme\E_Commerce\E_Commerce.Business\obj\Debug\net5.0\E_Commerce.Business.csproj.CoreCompileInputs.cache
+E:\InveonBitirme\E_Commerce\E_Commerce.Business\obj\Debug\net5.0\E_Commerce.Business.csproj.CopyComplete
+E:\InveonBitirme\E_Commerce\E_Commerce.Business\obj\Debug\net5.0\E_Commerce.Business.dll
+E:\InveonBitirme\E_Commerce\E_Commerce.Business\obj\Debug\net5.0\ref\E_Commerce.Business.dll
+E:\InveonBitirme\E_Commerce\E_Commerce.Business\obj\Debug\net5.0\E_Commerce.Business.pdb

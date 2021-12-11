@@ -1,0 +1,46 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "ad59b387-c406-4711-ab8a-ad8de508a8a0": {
+      "ProjectGuid": "ad59b387-c406-4711-ab8a-ad8de508a8a0",
+      "DisplayName": "E_Commerce.App.API",
+      "ColorIndex": 0
+    },
+    "c74556be-6c7c-47dc-938e-1c2bb4f19798": {
+      "ProjectGuid": "c74556be-6c7c-47dc-938e-1c2bb4f19798",
+      "DisplayName": "E_Commerce.Business",
+      "ColorIndex": 1
+    },
+    "f3dfb58c-66d0-4d88-8c7c-5fa888721437": {
+      "ProjectGuid": "f3dfb58c-66d0-4d88-8c7c-5fa888721437",
+      "DisplayName": "E_Commerce.Data",
+      "ColorIndex": 2
+    },
+    "12d063af-d2b6-4584-a9d1-1d564b241347": {
+      "ProjectGuid": "12d063af-d2b6-4584-a9d1-1d564b241347",
+      "DisplayName": "E_Commerce.App.Admin",
+      "ColorIndex": 3
+    },
+    "b357524e-4904-4225-9f79-583a17039a59": {
+      "ProjectGuid": "b357524e-4904-4225-9f79-583a17039a59",
+      "DisplayName": "E_Commerce.App.AdminPage",
+      "ColorIndex": 4
+    },
+    "d43cc53a-a18a-432c-a643-3fff12eeee3e": {
+      "ProjectGuid": "d43cc53a-a18a-432c-a643-3fff12eeee3e",
+      "DisplayName": "WebApplication1",
+      "ColorIndex": 5
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "e95576f9-bfb6-4347-ac04-82917623e101": {
+      "ProjectGuid": "e95576f9-bfb6-4347-ac04-82917623e101",
+      "DisplayName": "E_Commerce.App.Frontend",
+      "ColorIndex": 6
+    }
+  },
+  "NextColorIndex": 7
+}
