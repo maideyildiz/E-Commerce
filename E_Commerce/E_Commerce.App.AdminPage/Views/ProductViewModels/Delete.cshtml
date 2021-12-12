@@ -1,4 +1,4 @@
-﻿@model E_Commerce.App.Admin.Models.ProductViewModel
+﻿@model E_Commerce.App.AdminPage.Models.ProductViewModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -24,7 +24,7 @@
             @Html.DisplayFor(model => model.Price)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PictureURL)
+            <img src="@Html.DisplayFor(model => model.PictureURL)" height="100" width="100" />
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PictureURL)

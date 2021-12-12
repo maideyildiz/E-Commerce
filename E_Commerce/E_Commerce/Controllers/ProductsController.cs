@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using E_Commerce.Data.Entities;
 using E_Commerce.Business.Repositories;
 using E_Commerce.Data.Data;
@@ -15,12 +10,10 @@ namespace E_Commerce.App.API.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
         private readonly ProductRepository _repository;
 
         public ProductsController(ApplicationDbContext context)
         {
-            _context = context;
             _repository = new ProductRepository(context);
         }
 
@@ -28,14 +21,14 @@ namespace E_Commerce.App.API.Controllers
         [HttpGet]
         public List<ProductEntity> GetProducts()
         {
-            return _repository.GetAllProducts();
+            return _repository.GetAll();
         }
 
         //GET: api/Products/5
         [HttpGet("{id}")]
         public ProductEntity GetProductEntity(int id)
         {
-            return _repository.GetProductById(id);
+            return _repository.GetById(id);
         }
 
         // PUT: api/Products/5
@@ -49,7 +42,7 @@ namespace E_Commerce.App.API.Controllers
         [HttpPost]
         public int PostProductEntity(ProductEntity productEntity)
         {
-            return _repository.AddProduct(productEntity);
+            return _repository.Add(productEntity);
         }
 
         // DELETE: api/Products/5

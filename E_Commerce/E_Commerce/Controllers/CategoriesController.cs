@@ -15,12 +15,10 @@ namespace E_Commerce.App.API.Controllers
     [ApiController]
     public class CategoriesController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
         private readonly CategoryRepository _repository;
 
         public CategoriesController(ApplicationDbContext context)
         {
-            _context = context;
             _repository = new CategoryRepository(context);
         }
 

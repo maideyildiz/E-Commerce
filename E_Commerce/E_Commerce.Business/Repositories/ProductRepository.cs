@@ -1,59 +1,98 @@
 ﻿using E_Commerce.Data.Data;
 using E_Commerce.Data.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace E_Commerce.Business.Repositories
 {
-    public class ProductRepository 
+    public class ProductRepository :IRepository<ProductEntity>
     {
-        private readonly Repository<ProductEntity> _repository;
         private readonly ApplicationDbContext _context;
+        private readonly DbSet<ProductEntity> _dbSet;
         public ProductRepository(ApplicationDbContext context)
         {
             _context = context;
-            _repository = new Repository<ProductEntity>(context);
+            _dbSet = _context.Set<ProductEntity>();
         }
-        public int AddProduct(ProductEntity entity)
+        public int Add(ProductEntity entity)
         {
-            return _repository.Add(entity);
+            _dbSet.Add(entity);
+            return _context.SaveChanges();
         }
 
         public int DeleteProduct(int id)
         {
             if (id != 0)
             {
-                ProductEntity p = _repository.Find(x => x.Id == id);
-                return _repository.Delete(p);
+                ProductEntity p = Find(x => x.Id == id);
+                return Delete(p);
             }
             else
             {
                 return -1;
             }
         }
-
-        public List<ProductEntity> GetAllProducts()
+        public int Delete(ProductEntity entity)
         {
-            return _repository.GetAll();
+            _dbSet.Remove(entity);
+            return _context.SaveChanges();
         }
 
-        public ProductEntity GetProductById(int id)
+        public ProductEntity Find(Expression<Func<ProductEntity, bool>> where)
         {
-            return _repository.GetById(id);
+            return _dbSet.FirstOrDefault(where);
+        }
+        public List<ProductEntity> GetAll()
+        {
+            var list = _dbSet.Include(x => x.Category).Select(m => new ProductEntity()
+            {
+                Id = m.Id,
+                Name = m.Name,
+                Price = m.Price,
+                PictureURL = m.PictureURL,
+                Total = m.Total,
+                Details = m.Details,
+                CategoryId = m.CategoryId,
+                CategoryName = m.Category.Name
+            }).ToList();
+
+            return list;
+        }
+
+        public ProductEntity GetById(int id)
+        {
+            var item=_dbSet.Include(c => c.Category).Select(m => new ProductEntity()
+            {
+                Id = m.Id,
+                Name = m.Name,
+                Price = m.Price,
+                PictureURL = m.PictureURL,
+                Total = m.Total,
+                Details = m.Details,
+                CategoryId = m.CategoryId,
+                CategoryName = m.Category.Name
+            }).SingleOrDefault(i => i.Id == id);
+            return item;
         }
 
         public int UpdateProduct(int id,ProductEntity entity)
         {
-            ProductEntity p=_repository.Find(x=>x.Id==id);
+            ProductEntity p=Find(x=>x.Id==id);
             p.Name=entity.Name;
             p.Total=entity.Total;
-            p.PictureURL=entity.PictureURL;
+            p.PictureURL = entity.PictureURL;
             p.Price=entity.Price;
             p.Details=entity.Details;
-            p.CategoryId=entity.CategoryId;
-            p.Category=entity.Category;
-            return _repository.Update(p);
+            p.CategoryId = entity.CategoryId;
+            //p.Category=entity.Category;
+            return Update(p);
+        }
+        public int Update(ProductEntity entity)
+        {
+            return _context.SaveChanges();
         }
     }
 }

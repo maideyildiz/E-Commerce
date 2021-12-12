@@ -1,23 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using E_Commerce.App.AdminPage.Models;
 using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace E_Commerce.App.AdminPage.Controllers
 {
     public class ProductViewModelsController : Controller
     {
+        private readonly IWebHostEnvironment _webHostEnvirement;
         Uri baseAdress = new Uri("https://localhost:44340/api");
 
         HttpClient httpClient;
-        public ProductViewModelsController()
+        public ProductViewModelsController(IWebHostEnvironment webHostEnvirement)
         {
             httpClient = new HttpClient();
             httpClient.BaseAddress = baseAdress;
+            _webHostEnvirement = webHostEnvirement;
         }
 
         // GET: ProductViewModels
@@ -59,16 +63,26 @@ namespace E_Commerce.App.AdminPage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ProductViewModel model)
         {
-            string data = JsonConvert.SerializeObject(model);
-            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = httpClient.PostAsync(baseAdress + "/Products", content).Result;
-            if (response.IsSuccessStatusCode)
+            if (model.ProductImg != null)
             {
-                return RedirectToAction("Index");
+                string folder = "Products/";
+                //string deneme= Guid.NewGuid().ToString();
+                folder +=model.ProductImg.FileName/*+Guid.NewGuid().ToString()*/;
+                model.PictureURL="/"+folder;
+                string serverFolder=Path.Combine(_webHostEnvirement.WebRootPath,folder);
+                model.ProductImg.CopyTo(new FileStream(serverFolder,FileMode.Create));
+
+                string data = JsonConvert.SerializeObject(model);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = httpClient.PostAsync(baseAdress + "/Products", content).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
             }
+            
             return View();
         }
-
         // GET: ProductViewModels/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -89,6 +103,14 @@ namespace E_Commerce.App.AdminPage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ProductViewModel model)
         {
+            if (model.ProductImg != null)
+            {
+                string folder = "Products/";
+                folder += model.ProductImg.FileName;
+                model.PictureURL = "/" + folder;
+                string serverFolder = Path.Combine(_webHostEnvirement.WebRootPath, folder);
+                model.ProductImg.CopyTo(new FileStream(serverFolder, FileMode.Create));
+            }
             string data = JsonConvert.SerializeObject(model);
             StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
             HttpResponseMessage response = httpClient.PutAsync(baseAdress + "/Products/" + model.Id, content).Result;

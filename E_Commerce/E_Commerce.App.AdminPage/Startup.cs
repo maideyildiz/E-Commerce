@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using E_Commerce.App.AdminPage.Data;
 
 namespace E_Commerce.App.AdminPage
 {
@@ -22,9 +21,6 @@ namespace E_Commerce.App.AdminPage
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
-            services.AddDbContext<E_CommerceAppAdminPageContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("E_CommerceAppAdminPageContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

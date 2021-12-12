@@ -1,4 +1,4 @@
-﻿@model IEnumerable<E_Commerce.App.Admin.Models.ProductViewModel>
+﻿@model IEnumerable<E_Commerce.App.AdminPage.Models.ProductViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -28,7 +28,7 @@
                 @Html.DisplayNameFor(model => model.Details)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CategoryId)
+                @Html.DisplayNameFor(model => model.CategoryName)
             </th>
             <th></th>
         </tr>
@@ -43,7 +43,7 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PictureURL)
+                <img src="@Html.DisplayFor(modelItem => item.PictureURL)" height="100" width="100" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Total)
@@ -52,7 +52,7 @@
                 @Html.DisplayFor(modelItem => item.Details)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CategoryId)
+                @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

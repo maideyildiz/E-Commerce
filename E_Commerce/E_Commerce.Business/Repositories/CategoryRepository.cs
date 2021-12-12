@@ -47,13 +47,13 @@ namespace E_Commerce.Business.Repositories
 
         public List<CategoryEntity> GetAll()
         {
-            return _context.Set<CategoryEntity>().Include(p => p.Products).ToList();
+            return _dbSet.Include(p => p.Products).ToList();
         }
 
         public CategoryEntity GetById(int id)
         {
-            return _context.Set<CategoryEntity>().Include(p => p.Products).SingleOrDefault(i => i.Id == id);
-            //return _dbSet.Include(p => p.Products).Find(id);
+            //return _context.Set<CategoryEntity>().Include(p => p.Products).SingleOrDefault(i => i.Id == id);
+            return _dbSet.Include(p => p.Products).SingleOrDefault(i => i.Id == id);
         }
         public int UpdateCategory(int id, CategoryEntity entity)
         {

@@ -9,12 +9,13 @@ namespace E_Commerce.Data.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
-        [DataType(DataType.ImageUrl)]
         public string PictureURL { get; set; }
         public int Total { get; set; }
         public string Details { get; set; }
         [ForeignKey("CategoryEntity")]
         public int CategoryId { get; set; }
+        [NotMapped]
+        public string CategoryName { get; set; }
         public virtual CategoryEntity Category { get; set; }
     }
 }
