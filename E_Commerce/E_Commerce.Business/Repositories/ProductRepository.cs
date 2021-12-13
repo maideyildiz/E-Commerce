@@ -12,9 +12,11 @@ namespace E_Commerce.Business.Repositories
     {
         private readonly ApplicationDbContext _context;
         private readonly DbSet<ProductEntity> _dbSet;
+        private readonly CategoryRepository _category;
         public ProductRepository(ApplicationDbContext context)
         {
             _context = context;
+            _category=new CategoryRepository(context);
             _dbSet = _context.Set<ProductEntity>();
         }
         public int Add(ProductEntity entity)
@@ -37,10 +39,20 @@ namespace E_Commerce.Business.Repositories
         }
         public int Delete(ProductEntity entity)
         {
+            _dbSet.FirstOrDefault(i => i.Id == entity.Id);
             _dbSet.Remove(entity);
             return _context.SaveChanges();
         }
-
+        public int FindIdFromName(string cName)
+        {
+            //var ct=_context.Set<CategoryEntity>().SingleOrDefault(x => x.Name == cName);/*Find(x => x.Name == cName); */
+            var item = _context.Set<CategoryEntity>().Select(m => new CategoryEntity()
+            {
+                Id = m.Id,
+                Name = m.Name,
+            }).SingleOrDefault(x => x.Name == cName);
+            return item.Id;
+        }
         public ProductEntity Find(Expression<Func<ProductEntity, bool>> where)
         {
             return _dbSet.FirstOrDefault(where);
@@ -61,7 +73,15 @@ namespace E_Commerce.Business.Repositories
 
             return list;
         }
-
+        public List<CategoryEntity> GetCategories()
+        {
+            var item = _context.Set<CategoryEntity>().Select(m => new CategoryEntity()
+            {
+                Id = m.Id,
+                Name = m.Name,
+            }).ToList();
+            return item;
+        }
         public ProductEntity GetById(int id)
         {
             var item=_dbSet.Include(c => c.Category).Select(m => new ProductEntity()

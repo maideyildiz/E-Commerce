@@ -1,49 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using E_Commerce.App.AdminPage.Models;
-using System.Net.Http;
-using System.Text;
-using Newtonsoft.Json;
+using Microsoft.AspNetCore.Hosting;
+using E_Commerce.App.AdminPage.APIServices;
 
 namespace E_Commerce.App.AdminPage.Controllers
 {
     public class CategoryViewModelsController : Controller
     {
-        Uri baseAdress = new Uri("https://localhost:44340/api");
-
-        HttpClient httpClient;
-        public CategoryViewModelsController()
+        private readonly CategoryService _cr;
+        public CategoryViewModelsController(IWebHostEnvironment webHostEnvirement)
         {
-            httpClient = new HttpClient();
-            httpClient.BaseAddress = baseAdress;
+            _cr = new CategoryService(webHostEnvirement);
         }
 
         // GET: CategoryViewModels
         public ActionResult Index()
-        {
-            List<CategoryViewModel> modelList = new List<CategoryViewModel>();
-            HttpResponseMessage response = httpClient.GetAsync(baseAdress + "/Categories").Result;
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                modelList = JsonConvert.DeserializeObject<List<CategoryViewModel>>(data);
-            }
-            return View(modelList);
+        { 
+            return View(_cr.GetAllCategories());
         }
 
         // GET: CategoryViewModels/Details/5
         public ActionResult Details(int? id)
         {
-            CategoryViewModel model = new CategoryViewModel();
-            HttpResponseMessage response = httpClient.GetAsync(baseAdress + "/Categories/" + id).Result;
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                model = JsonConvert.DeserializeObject<CategoryViewModel>(data);
-            }
-            return View(/*"Create" + */model);
+            return View(_cr.GetOneCategory(id));
         }
 
         // GET: ProductViewModels/Create
@@ -59,10 +38,7 @@ namespace E_Commerce.App.AdminPage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CategoryViewModel model)
         {
-            string data = JsonConvert.SerializeObject(model);
-            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = httpClient.PostAsync(baseAdress + "/Categories", content).Result;
-            if (response.IsSuccessStatusCode)
+            if (_cr.AddCategory(model).IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
             }
@@ -72,14 +48,7 @@ namespace E_Commerce.App.AdminPage.Controllers
         // GET: CategoryViewModels/Edit/5
         public ActionResult Edit(int? id)
         {
-            CategoryViewModel model = new CategoryViewModel();
-            HttpResponseMessage response = httpClient.GetAsync(baseAdress + "/Categories/+id").Result;
-            if (response.IsSuccessStatusCode)
-            {
-                string data = response.Content.ReadAsStringAsync().Result;
-                model = JsonConvert.DeserializeObject<CategoryViewModel>(data);
-            }
-            return View(/*"Create" + */model);
+            return View(_cr.GetOneCategory(id));
         }
 
         // POST: CategoryViewModels/Edit/5
@@ -89,10 +58,7 @@ namespace E_Commerce.App.AdminPage.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CategoryViewModel model)
         {
-            string data = JsonConvert.SerializeObject(model);
-            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = httpClient.PutAsync(baseAdress + "/Categories/" + model.Id, content).Result;
-            if (response.IsSuccessStatusCode)
+            if (_cr.EditCategory(model).IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
             }
@@ -102,24 +68,12 @@ namespace E_Commerce.App.AdminPage.Controllers
         //GET: CategoryViewModels/Delete/5
         public ActionResult Delete(int? id)
         {
-            HttpResponseMessage response = httpClient.DeleteAsync(baseAdress + "/Categories/" + id).Result;
-            if (response.IsSuccessStatusCode)
+            if (_cr.DeleteCategory(id).IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
             }
             return View();
         }
-
-        //// POST: CategoryViewModels/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    var categoryViewModel = await _context.CategoryViewModel.FindAsync(id);
-        //    _context.CategoryViewModel.Remove(categoryViewModel);
-        //    await _context.SaveChangesAsync();
-        //    return RedirectToAction(nameof(Index));
-        //}
 
     }
 }

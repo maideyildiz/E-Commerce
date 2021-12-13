@@ -49,6 +49,10 @@ namespace E_Commerce.Business.Repositories
         {
             return _dbSet.Include(p => p.Products).ToList();
         }
+        public List<string> GetOnlyNames()
+        {
+            return _dbSet.Select(c => c.Name).ToList();
+        }
 
         public CategoryEntity GetById(int id)
         {

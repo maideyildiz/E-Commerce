@@ -23,14 +23,22 @@ namespace E_Commerce.App.API.Controllers
         {
             return _repository.GetAll();
         }
-
+        [HttpGet("/Categories/")]
+        public List<CategoryEntity> GetCategories()
+        {
+            return _repository.GetCategories();
+        }
         //GET: api/Products/5
         [HttpGet("{id}")]
         public ProductEntity GetProductEntity(int id)
         {
             return _repository.GetById(id);
         }
-
+        [HttpGet("/ProductCategory/{CategoryName}")]
+        public int ProductEntityId(string CategoryName)
+        {
+            return _repository.FindIdFromName(CategoryName);
+        }
         // PUT: api/Products/5
         [HttpPut("{id}")]
         public int PutProductEntity(int id,ProductEntity productEntity)

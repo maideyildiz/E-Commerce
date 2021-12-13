@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace E_Commerce.Business.Repositories
 {
-    public interface IRepository<T>
+    public interface IRepository<T> where T : class
     {
         int Add(T entity);
         int Update(T entity);
