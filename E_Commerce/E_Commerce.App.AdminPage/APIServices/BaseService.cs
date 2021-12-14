@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace E_Commerce.App.AdminPage.APIServices
 {
-    public class BaseService<T> where T : class,new()
+    public class BaseService<T> /*: IBaseService<T> where T : class, new()*/  where T : class, new()
     {
         public readonly IWebHostEnvironment _webHostEnvirement;
         public Uri baseAdress = new Uri("https://localhost:44340/api");

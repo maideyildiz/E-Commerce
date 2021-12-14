@@ -8,14 +8,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace E_Commerce.App.AdminPage.APIServices
 {
-    public class ProductService
+    public class ProductService /*: BaseService<ProductViewModel>, IBaseService<ProductViewModel>*/
     {
         private readonly BaseService<ProductViewModel> bs;
         public ProductService(IWebHostEnvironment webHostEnvirement)
         {
-            bs=new BaseService<ProductViewModel>(webHostEnvirement);
+            bs = new BaseService<ProductViewModel>(webHostEnvirement);
         }
-        
+
         public List<ProductViewModel> GetProducts()
         {
             ProductViewModel model = new ProductViewModel();
@@ -68,5 +68,8 @@ namespace E_Commerce.App.AdminPage.APIServices
         {
             return bs.DeleteResMethod("/Products/", id);
         }
+        //public ProductService(IWebHostEnvironment webHostEnvirement) : base(webHostEnvirement)
+        //{
+        //}
     }
 }

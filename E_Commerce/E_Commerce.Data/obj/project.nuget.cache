@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "O340ZhLb8b2obXvgp9OokE9D+3Wtd7E6kxJL8geucOJw9z+Q/71c//Uk7c6V45kpAEHOKN3loAOtNFjB8UDVzw==",
+  "dgSpecHash": "Woe9K4auzJQulxnsrfiLPO5H1woGjOwp8F8fpK/r5+CzQpiZs/pTjn8p3YwRXFFmBHP7jMkX4i0Tw/OSEK9Fdg==",
   "success": true,
   "projectFilePath": "E:\\InveonBitirme\\E_Commerce\\E_Commerce.Data\\E_Commerce.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\maide\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\maide\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\maide\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\maide\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\maide\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\maide\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\maide\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\5.0.0\\microsoft.aspnetcore.razor.language.5.0.0.nupkg.sha512",
     "C:\\Users\\maide\\.nuget\\packages\\microsoft.aspnetcore.razor.runtime\\2.2.0\\microsoft.aspnetcore.razor.runtime.2.2.0.nupkg.sha512",

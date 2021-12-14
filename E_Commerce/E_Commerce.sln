@@ -9,13 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{20A78C0B-A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{20799F13-2096-4B0D-8016-AAF619529464}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E_Commerce.Business", "E_Commerce.Business\E_Commerce.Business.csproj", "{C74556BE-6C7C-47DC-938E-1C2BB4F19798}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E_Commerce.Business", "E_Commerce.Business\E_Commerce.Business.csproj", "{C74556BE-6C7C-47DC-938E-1C2BB4F19798}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E_Commerce.Data", "E_Commerce.Data\E_Commerce.Data.csproj", "{F3DFB58C-66D0-4D88-8C7C-5FA888721437}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E_Commerce.Data", "E_Commerce.Data\E_Commerce.Data.csproj", "{F3DFB58C-66D0-4D88-8C7C-5FA888721437}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "App", "App", "{AA21B22D-978E-46DB-9AFE-297E716CB370}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E_Commerce.App.AdminPage", "E_Commerce.App.AdminPage\E_Commerce.App.AdminPage.csproj", "{B357524E-4904-4225-9F79-583A17039A59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E_Commerce.App.AdminPage", "E_Commerce.App.AdminPage\E_Commerce.App.AdminPage.csproj", "{B357524E-4904-4225-9F79-583A17039A59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

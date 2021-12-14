@@ -21,7 +21,7 @@ namespace E_Commerce.App.API.Controllers
         [HttpGet]
         public List<ProductEntity> GetProducts()
         {
-            return _repository.GetAll();
+            return _repository.GetWithCName();
         }
         [HttpGet("/Categories/")]
         public List<CategoryEntity> GetCategories()

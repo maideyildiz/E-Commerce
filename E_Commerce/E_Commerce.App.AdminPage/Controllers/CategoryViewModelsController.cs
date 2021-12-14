@@ -15,7 +15,7 @@ namespace E_Commerce.App.AdminPage.Controllers
 
         // GET: CategoryViewModels
         public ActionResult Index()
-        { 
+        {
             return View(_cr.GetAllCategories());
         }
 

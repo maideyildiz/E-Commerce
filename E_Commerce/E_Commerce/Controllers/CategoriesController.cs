@@ -29,7 +29,12 @@ namespace E_Commerce.App.API.Controllers
             //return await _context.Categories.Include(p=>p.Products).ToListAsync();
             return _repository.GetAll();
         }
-
+        [HttpGet("/WithProducts/")]
+        public List<CategoryEntity> GetWithProducts()
+        {
+            //return await _context.Categories.Include(p=>p.Products).ToListAsync();
+            return _repository.GetWithProducts();
+        }
         // GET: api/Categories/5
         [HttpGet("{id}")]
         public CategoryEntity GetCategoryEntity(int id)

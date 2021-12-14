@@ -8,19 +8,20 @@ using System.Linq.Expressions;
 
 namespace E_Commerce.Business.Repositories
 {
-    public class CategoryRepository : IRepository<CategoryEntity>
+    public class CategoryRepository : Repository<CategoryEntity>, IRepository<CategoryEntity>
     {
-        private readonly ApplicationDbContext _context;
-        private readonly DbSet<CategoryEntity> _dbSet;
-        public CategoryRepository(ApplicationDbContext context)
+        public CategoryRepository(ApplicationDbContext context) : base(context)
         {
-            _context = context;
-            _dbSet = _context.Set<CategoryEntity>();
         }
-        public int Add(CategoryEntity entity)
+        public List<CategoryEntity> GetWithProducts()
         {
-            _dbSet.Add(entity);
-            return _context.SaveChanges();
+            return _dbSet.Include(p => p.Products).ToList();
+        }
+        public int UpdateCategory(int id, CategoryEntity entity)
+        {
+            CategoryEntity c = Find(x => x.Id == id);
+            c.Name = entity.Name;
+            return Update(c);
         }
         public int DeleteCategory(int id)
         {
@@ -33,41 +34,6 @@ namespace E_Commerce.Business.Repositories
             {
                 return -1;
             }
-        }
-        public int Delete(CategoryEntity entity)
-        {
-            _dbSet.Remove(entity);
-            return _context.SaveChanges();
-        }
-
-        public CategoryEntity Find(Expression<Func<CategoryEntity, bool>> where)
-        {
-            return _dbSet.FirstOrDefault(where);
-        }
-
-        public List<CategoryEntity> GetAll()
-        {
-            return _dbSet.Include(p => p.Products).ToList();
-        }
-        public List<string> GetOnlyNames()
-        {
-            return _dbSet.Select(c => c.Name).ToList();
-        }
-
-        public CategoryEntity GetById(int id)
-        {
-            //return _context.Set<CategoryEntity>().Include(p => p.Products).SingleOrDefault(i => i.Id == id);
-            return _dbSet.Include(p => p.Products).SingleOrDefault(i => i.Id == id);
-        }
-        public int UpdateCategory(int id, CategoryEntity entity)
-        {
-            CategoryEntity c = Find(x => x.Id == id);
-            c.Name = entity.Name;
-            return Update(c);
-        }
-        public int Update(CategoryEntity entity)
-        {
-            return _context.SaveChanges();
         }
     }
 }

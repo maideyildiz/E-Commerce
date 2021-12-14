@@ -9,8 +9,8 @@ namespace E_Commerce.Business.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private readonly ApplicationDbContext _context;
-        private readonly DbSet<T> _dbSet;
+        public readonly ApplicationDbContext _context;
+        public readonly DbSet<T> _dbSet;
         public Repository(ApplicationDbContext context)
         {
             _context = context;
@@ -22,13 +22,11 @@ namespace E_Commerce.Business.Repositories
             _dbSet.Add(entity);
             return _context.SaveChanges();
         }
-
         public int Delete(T entity)
         {
             _dbSet.Remove(entity);
             return _context.SaveChanges();
         }
-
         public T Find(Expression<Func<T, bool>> where)
         {
             return _dbSet.FirstOrDefault(where);

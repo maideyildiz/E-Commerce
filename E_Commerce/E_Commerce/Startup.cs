@@ -1,6 +1,7 @@
 using E_Commerce.Business.Repositories;
 using E_Commerce.Data;
 using E_Commerce.Data.Data;
+using E_Commerce.Data.Initializer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,12 +33,12 @@ namespace E_Commerce.App.API
         {
             //services.Transient<IRepository, Repository>();
             //services.AddControllers();
-            //services.AddDAL(Configuration);
-            services.AddDbContext<ApplicationDbContext>(x =>
-            {
-                //x.EnableSensitiveDataLogging();
-                x.UseSqlServer(Configuration.GetConnectionString("Default"));
-            });
+            services.AddDAL(Configuration);
+            //services.AddDbContext<ApplicationDbContext>(x =>
+            //{
+            //    //x.EnableSensitiveDataLogging();
+            //    x.UseSqlServer(Configuration.GetConnectionString("Default"));
+            //});
             services.AddControllers().AddNewtonsoftJson(options =>
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             
@@ -67,6 +68,7 @@ namespace E_Commerce.App.API
             {
                 endpoints.MapControllers();
             });
+            DataInitializer.Seed(app);
         }
     }
 }
